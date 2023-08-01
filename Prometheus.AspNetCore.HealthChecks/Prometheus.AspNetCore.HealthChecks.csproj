@@ -1,0 +1,74 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0</TargetFrameworks>
+		<RootNamespace>Prometheus</RootNamespace>
+
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>..\Resources\prometheus-net.snk</AssemblyOriginatorKeyFile>
+
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+		<NoWarn>1591</NoWarn>
+
+		<LangVersion>latest</LangVersion>
+		<WarningLevel>9999</WarningLevel>
+
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+
+		<!-- Source Link config -->
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+		<!-- NuGet packaging config -->
+		<PackageId>prometheus-net.AspNetCore.HealthChecks</PackageId>
+		<Authors>sandersaares</Authors>
+		<Company>prometheus-net</Company>
+		<Product>prometheus-net</Product>
+		<Description>ASP.NET Core Health Checks integration with Prometheus</Description>
+		<Copyright>Copyright © prometheus-net developers</Copyright>
+		<PackageProjectUrl>https://github.com/prometheus-net/prometheus-net</PackageProjectUrl>
+		<PackageIcon>prometheus-net-logo.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageTags>metrics prometheus aspnetcore</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<IncludeSymbols>True</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(TF_BUILD)' == 'true'">
+		<!-- Deterministic builds, as per https://github.com/clairernovotny/DeterministicBuilds -->
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\Resources\prometheus-net-logo.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Include="..\Resources\SolutionAssemblyInfo.cs" Link="SolutionAssemblyInfo.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.9" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Prometheus.AspNetCore\Prometheus.AspNetCore.csproj" />
+	</ItemGroup>
+	
+	
+
+</Project>

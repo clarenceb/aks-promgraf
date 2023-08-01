@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sampleweb
+spec:
+  selector:
+    matchLabels:
+      app: sampleweb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sampleweb
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "80"
+    spec:
+      containers:
+      - name: sampleweb
+        image: "$REGISTRY_LOGIN_SERVER/sampleweb:latest"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sampleweb
+spec:
+  selector:
+    app: sampleweb
+  ports:
+  - port: 80
+    targetPort: 80
