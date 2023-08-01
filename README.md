@@ -61,6 +61,24 @@ az aks create \
     --generate-ssh-keys
 ```
 
+(Optional) Test sample application locally
+------------------------------------------
+
+```sh
+cd prometheus-net/Sample.Web
+
+# Requires .NET 6.0
+dotnet run
+
+
+```
+
+Deploy sample application to AKS
+--------------------------------
+
+Enable pod-annotation based scraping for the app
+------------------------------------------------
+
 Resources
 ---------
 
