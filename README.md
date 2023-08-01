@@ -179,7 +179,7 @@ Either use Azure Monitoring workspace Prometheus Explorer or create an Azure Wor
 
 ```promql
 sum(rate(http_request_duration_seconds_count[30s]))
-``
+```
 
 Create a dashboard in Grafana
 -----------------------------
@@ -195,7 +195,7 @@ Credits
 -------
 
 * Sample.Web app is from: https://github.com/prometheus-net/prometheus-net/blob/master/Sample.Web
-* See also: https://github.com/prometheus-net/prometheus-net
+* Additional dependencies from https://github.com/prometheus-net/prometheus-net and https://github.com/prometheus-net/grafana-dashboards
 
 TODO
 ----
